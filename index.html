@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>One Hundred — Habit Tracker</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main id="loginPage" class="login-page" aria-hidden="true">
+    <form id="loginForm" class="login-card">
+      <div class="login-brand" aria-label="Welcome to One Hundred">
+        <span class="login-welcome">WELCOME TO</span>
+        <svg class="brand-mark" viewBox="0 0 44 28" aria-hidden="true">
+          <path d="M6 7v14M2 10l4-3" />
+          <circle cx="19" cy="14" r="7" />
+          <circle cx="36" cy="14" r="7" />
+        </svg>
+        <span class="brand-name">one hundred</span>
+      </div>
+      <h1>Make it<br><em>yours.</em></h1>
+      <p class="login-copy">Set up your personal 100-day journey. Everything stays private in this browser.</p>
+      <label>Your name<input id="loginName" type="text" maxlength="28" placeholder="Enter your name" required autofocus></label>
+      <label>Profile photo<input id="loginPhoto" type="file" accept="image/*" required></label>
+      <label>Start your tracker on<input id="loginStartDate" type="text" inputmode="numeric" placeholder="DD-MM-YYYY" pattern="\d{2}-\d{2}-\d{4}" maxlength="10" autocomplete="off" required></label>
+      <button class="login-submit" type="submit">Create my tracker <span>→</span></button>
+    </form>
+  </main>
+  <main id="homePage" class="page home-page">
+    <header class="home-nav">
+       <a class="brand" href="#" aria-label="One Hundred home">
+        <svg class="brand-mark" viewBox="0 0 44 28" aria-hidden="true">
+          <path d="M6 7v14M2 10l4-3" />
+          <circle cx="19" cy="14" r="7" />
+          <circle cx="36" cy="14" r="7" />
+        </svg>
+        <span class="brand-name">one hundred</span>
+      </a>
+      <div class="home-actions">
+        <button id="homeSettings" class="home-settings" aria-label="Open settings">⚙</button>
+        <button id="openTracker" class="tracker-button">
+          <span>Track My Habits</span>
+          <span class="arrow">↗</span>
+        </button>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">MY 2026 — 2027 JOURNEY</p>
+        <h1>Build the life<br><em>you want.</em></h1>
+        <p class="intro">
+          A personal space to track the small actions that compound into
+          bigger results — every day, until the end of 2026.
+        </p>
+        <button id="heroTracker" class="primary-button">Start tracking <span>→</span></button>
+      </div>
+
+      <div class="profile-wrap">
+        <div id="openAbout" class="photo-card" role="button" tabindex="0" aria-label="Open About me">
+          <img id="profilePhoto" src="profile.jpg" alt="Your photo">
+          <div class="photo-fallback">
+            <div class="initials">LS</div>
+            <span>Replace <b>profile.jpg</b><br>with your photo</span>
+          </div>
+          <div class="photo-caption">
+            <span>LAKSHYA</span>
+            <small>Consistency over intensity.</small>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="home-stats">
+      <div><strong>2026 → 2027</strong><span>The journey</span></div>
+      <div><strong>Daily</strong><span>One day at a time</span></div>
+      <div><strong>∞</strong><span>Room to improve</span></div>
+    </section>
+
+    <section class="attendance-card">
+      <div class="attendance-heading"><div><p class="eyebrow">YOUR RHYTHM</p><h2>Attendance</h2></div><span id="calendarMonth"></span></div>
+      <div class="calendar-legend"><span><i class="present-dot"></i> Present</span><span><i class="absent-dot"></i> Absent</span></div>
+      <div class="calendar-days" id="attendanceCalendar"></div>
+    </section>
+  </main>
+
+  <main id="aboutPage" class="about-page" aria-hidden="true">
+    <div class="about-blur"></div>
+    <header class="about-head"><button id="closeAbout" class="back-button" aria-label="Back to home">← Home</button><button id="editAbout" class="edit-about" aria-label="Edit about information">✎</button></header>
+    <section class="about-content">
+      <img id="aboutPhoto" class="about-photo" src="profile.jpg" alt="Profile photo">
+      <p class="eyebrow">ABOUT THE PERSON BEHIND THE PLAN</p><h1 id="aboutName">LAKSHYA</h1><p id="aboutBio" class="about-bio">A work in progress, showing up one day at a time.</p>
+      <div class="about-details"><article><span>From</span><strong id="aboutPlace">Add your home</strong></article><article><span>Education</span><strong id="aboutEducation">Add your education</strong></article><article><span>Skills</span><strong id="aboutSkills">Add your skills</strong></article><article><span>Free time</span><strong id="aboutHobbies">Add what you love</strong></article></div>
+      <section class="travel-section"><p class="eyebrow">MEMORIES IN MOTION</p><h2>Travel history</h2><div id="travelGallery" class="travel-gallery"></div></section>
+    </section>
+    <div id="aboutEditor" class="about-editor" hidden><div class="editor-sheet"><div class="group-title"><h3>Edit about me</h3><button id="closeAboutEditor" class="icon-button">×</button></div><label>About you<textarea id="bioInput" maxlength="220"></textarea></label><label>Where you belong<input id="placeInput" maxlength="60"></label><label>Educational details<input id="educationInput" maxlength="100"></label><label>Skills<input id="skillsInput" maxlength="100"></label><label>What you love in your free time<input id="hobbiesInput" maxlength="100"></label><h4>Travel memories</h4><div id="travelEditor" class="travel-editor"></div><input id="travelImageInput" type="file" accept="image/*" hidden><button id="saveAbout" class="panel-button">Save profile</button></div></div>
+  </main>
+
+  <main id="trackerPage" class="page tracker-page" aria-hidden="true">
+    <div class="tracker-header">
+      <button id="backHome" class="back-button">← Home</button>
+      <div>
+        <p class="eyebrow">PERSONAL DASHBOARD</p>
+        <h2>Habit Tracker</h2>
+      </div>
+      <div class="header-actions">
+        <button id="moreMenu" class="more-button" aria-label="Customize habits" aria-expanded="false">⋮</button>
+      </div>
+    </div>
+
+    <section class="dashboard">
+      <div class="metric"><span>Days tracked</span><strong id="daysTracked">0</strong></div>
+      <div class="metric"><span>Today's score</span><strong id="todayScore">0%</strong></div>
+      <div class="metric"><span>Overall completion</span><strong id="overallScore">0%</strong></div>
+      <div class="metric"><span>Best day</span><strong id="bestDay">—</strong></div>
+    </section>
+
+    <section class="controls">
+      <div class="legend">
+        <span><i class="done"></i> Done</span>
+        <span><i class="missed"></i> Missed</span>
+        <span><i class="empty"></i> Not marked</span>
+      </div>
+      <div class="control-actions">
+        <button id="todayBtn">Jump to today</button>
+        <button id="clearDayBtn">Clear selected day</button>
+      </div>
+    </section>
+
+    <section class="table-shell">
+      <div class="table-scroll" id="tableScroll">
+        <table id="habitTable">
+          <thead></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+
+    <p class="tip">Tip: click a cell to cycle <b>✓ Done</b> → <b>× Missed</b> → <b>blank</b>. Your progress is saved automatically in this browser.</p>
+  </main>
+
+  <aside id="settingsPanel" class="settings-panel" aria-hidden="true" aria-label="Settings and customization">
+    <div class="panel-head">
+      <div><p class="eyebrow">YOUR SPACE</p><h3>Settings</h3></div>
+      <button id="closePanel" class="icon-button" aria-label="Close panel">×</button>
+    </div>
+    <div class="panel-content">
+      <section class="setting-group home-only">
+        <h4>⚙ Settings</h4>
+       <label>100-day challenge start date<input id="startDateInput" type="text" inputmode="numeric" placeholder="DD-MM-YYYY" pattern="\d{2}-\d{2}-\d{4}" maxlength="10" autocomplete="off"></label>
+        <button id="saveStartDate" class="panel-button">Update challenge dates</button>
+        <button id="exportData" class="panel-button">Export my data</button>
+        <label class="import-label">Import saved data<input id="importData" type="file" accept="application/json"></label>
+        <label class="switch-row">Light mode <input id="themeToggle" type="checkbox"><span class="switch"></span></label>
+        <button id="resetData" class="danger-button">Reset all progress</button>
+      </section>
+      <section class="setting-group">
+        <div class="group-title"><h4>✦ Customize habits</h4><button id="addHabit" class="small-button">＋ Add</button></div>
+        <div id="habitEditor" class="habit-editor"></div>
+      </section>
+      <section class="setting-group home-only">
+        <h4>🎨 Appearance</h4>
+        <label>Display name<input id="nameInput" type="text" maxlength="28"></label>
+        <label>Introduction<input id="introInput" type="text" maxlength="100"></label>
+        <label>Accent color<input id="accentInput" type="color"></label>
+        <label>Background theme<select id="backgroundInput"><option value="default">Midnight</option><option value="forest">Forest</option><option value="plum">Plum</option></select></label>
+        <button id="changePhoto" class="panel-button">Change photo</button><input id="photoInput" type="file" accept="image/*" hidden>
+      </section>
+    </div>
+  </aside>
+  <div id="panelBackdrop" class="panel-backdrop"></div>
+
+  <div id="toast" class="toast"></div>
+  <script src="transition.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
